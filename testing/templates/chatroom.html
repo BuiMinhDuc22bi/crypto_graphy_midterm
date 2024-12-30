@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption/Decryption</title>
+</head>
+<body>
+    <!-- Display Encrypted/Decrypted Message -->
+    {% if encrypted_message %}
+        <h3>Encrypted Message:</h3>
+        <p>{{ encrypted_message }}</p>
+    {% endif %}
+
+    {% if decrypted_message %}
+        <h3>Decrypted Message:</h3>
+        <p>{{ decrypted_message }}</p>
+    {% endif %}
+
+    <!-- Display Decrypted File -->
+    {% if message %}
+        <p><strong>{{ message }}</strong></p>
+    {% endif %}
+    {% if file_link %}
+        <h2>Decrypted File</h2>
+        
+        <!-- Display Image -->
+        {% if file_type == 'image' %}
+        <img src="{{ file_link }}" alt="Decrypted Image" style="max-width: 100%; height: auto;">
+        {% endif %}
+        
+        <!-- Display Video -->
+        {% if file_type == 'video' %}
+        <video controls style="max-width: 100%; height: auto;">
+            <source src="{{ file_link }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        {% endif %}
+        
+        <!-- Display Text/PDF -->
+        {% if file_type == 'text' %}
+        <iframe src="{{ file_link }}" style="width: 100%; height: 500px;"></iframe>
+        {% endif %}
+        
+        <!-- Unsupported File Types -->
+        {% if file_type == 'other' %}
+        <p>Decrypted file is ready for download:</p>
+        <a href="{{ file_link }}" download>{{ file_name }}</a>
+        {% endif %}
+    {% endif %}
+    
+    <h1>File Encryption and Decryption</h1>
+
+    <!-- Encrypt File Section -->
+    <h2>Encrypt File</h2>
+    <form action="/encrypt_file" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Encrypt File</button>
+    </form>
+
+    <!-- Decrypt File Section -->
+    <h2>Decrypt File</h2>
+    <form action="/decrypt_file" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Decrypt File</button>
+    </form>
+
+    <!-- Encrypt Message Section -->
+    <h2>Encrypt Message</h2>
+    <form action="/encrypt_message" method="post">
+        <input type="text" name="message" placeholder="Enter message" required>
+        <button type="submit">Encrypt Message</button>
+    </form>
+
+    <!-- Decrypt Message Section -->
+    <h2>Decrypt Message</h2>
+    <form action="/decrypt_message" method="post">
+        <input type="text" name="encrypted_message" placeholder="Enter encrypted message" required>
+        <button type="submit">Decrypt Message</button>
+    </form>
+
+    
+</body>
+</html>
