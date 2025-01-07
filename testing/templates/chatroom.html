@@ -6,6 +6,27 @@
     <title>Encryption/Decryption</title>
 </head>
 <body>
+    <!-- Display Encryption Time -->
+<!-- Display Encryption Time -->
+{% if encryption_time %}
+<p><strong>Encryption Time:</strong> {{ encryption_time }} ms</p>
+{% endif %}
+
+<!-- Display Decryption Time -->
+{% if decryption_time %}
+<p><strong>Decryption Time:</strong> {{ decryption_time }} ms</p>
+{% endif %}
+
+<!-- Display File Encryption Time -->
+{% if file_encryption_time %}
+<p><strong>File Encryption Time:</strong> {{ file_encryption_time }} ms</p>
+{% endif %}
+
+<!-- Display File Decryption Time -->
+{% if file_decryption_time %}
+<p><strong>File Decryption Time:</strong> {{ file_decryption_time }} ms</p>
+{% endif %}
+
     <!-- Display Encrypted/Decrypted Message -->
     {% if encrypted_message %}
         <h3>Encrypted Message:</h3>
@@ -13,9 +34,9 @@
     {% endif %}
 
     {% if decrypted_message %}
-        <h3>Decrypted Message:</h3>
-        <p>{{ decrypted_message }}</p>
-    {% endif %}
+    <p>Decrypted Message: {{ decrypted_message }}</p>
+    <p>Decryption Time: {{ decryption_time }} seconds</p>
+{% endif %}
 
     <!-- Display Decrypted File -->
     {% if message %}

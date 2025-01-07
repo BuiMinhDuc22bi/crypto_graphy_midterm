@@ -1,0 +1,5 @@
+#1: binary form a (123) = 0b1111011
+xor binary form  = 0b1001100100
+xor decimal for = 612
+#2: message hidden: intro2crypto{w3lc0m3_t0_j0urn3y}
+#3: message hidden: intro2crypto{1st3p_0n_j0urn3y}
